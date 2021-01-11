@@ -71,12 +71,12 @@ def main():
 	nb=0
 	crawler=forumDownloader(conn,sys.argv[1])
 	for topic in topics.split("\n"):
-		nb+=crawler.getPosts(topic)
+		nb+=crawler.getPosts(topic.split(";")[0])
 	conn.commit()
 	if nb==0:
 		print("no new topics downloaded, thank you for your help!")
 	else:
-		print("{} new topics downloaded, please send missingTopics.db to xaav.\n Thank you for your help!")
+		print("{} new topics downloaded, please send missingTopics.db to xaav.\n Thank you for your help!".format(nb))
 
 if __name__ == "__main__":
     main()
